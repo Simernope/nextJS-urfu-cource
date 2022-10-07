@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+.container {
+  margin: 0;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  display: inline-flex;
+  align-items: center;
+  width: 400px;
+  height: 50px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  .text {
+
+  }
+
+  .radio {
+    margin: 15px 16px 15px 12px;
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    box-sizing: border-box;
+
+    .radio__outer {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      border: 2px solid #828282;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+
+      .radio__dot {
+        width: 10px;
+        height: 10px;
+        box-sizing: border-box;
+        border-radius: 50%;
+
+        &_checked {
+          background-color: #00EAD9FF;
+        }
+      }
+
+      &_disabled {
+        border: 2px solid #EEEEEE;
+      }
+
+      &_checked {
+        border: 2px solid #00EAD9FF;
+      }
+    }
+  }
+
+  &:hover{
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+    .radio__outer {
+      border: 2px solid #00EAD9FF;
+    }
+  }
+
+  &_disabled {
+    color: #EEEEEE;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    cursor: not-allowed;
+
+  }
+}
+
