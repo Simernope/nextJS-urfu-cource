@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from './Checkbox.module.scss'
 
 const Checkbox = ({checked, disabled}) => {
+
     return (
         <>
             <div className={styles.container}>

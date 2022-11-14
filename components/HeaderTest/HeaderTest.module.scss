@@ -1,0 +1,30 @@
+
+.container{
+  display: inline-flex;
+  justify-content: space-between;
+  text-align: center;
+  height: 128px;
+  width: calc(100% - 100px);
+  margin-left: 100px;
+  padding: 0 38px 0 0;
+  border-bottom: 1px solid #E0E0E0;
+  box-sizing: border-box;
+  left: 100px;
+  right: 0;
+  .item{
+    margin: auto 0;
+    .containerForTitle{
+      max-width: 824px;
+      margin-right: 100px;
+    }
+    .header{
+      color:  #828282;
+      text-transform: uppercase;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+}

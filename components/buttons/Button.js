@@ -7,7 +7,9 @@ const Button = ({text, status}) => {
                                 ${styles.button} 
                                 ${status==='disabled' && styles.button_disabled}
                                 
-                                `}>{text}</button>
+                                `} >
+                {text}
+          </button>
         </>
     )
 }

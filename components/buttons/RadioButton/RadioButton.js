@@ -1,11 +1,13 @@
 import styles from './Radio.module.scss'
 
+
 const RadioButton = ({text, checked, disabled}) => {
     return(
         <div className={`
                         ${styles.container}
                         ${disabled && styles.container_disabled}    
                         `}>
+            {checked === true}
             <div className={styles.radio}>
                 <div className={`
                                 ${styles.radio__outer}

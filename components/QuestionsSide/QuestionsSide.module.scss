@@ -1,0 +1,31 @@
+.container{
+    width: 100px;
+    height: 1080px;
+    color: #3AB8BC;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    display: inline-flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0 ;
+    left: 0;
+    .leftArrow{
+        text-align: center;
+        padding:55px 0;
+        cursor: pointer;
+    }
+    .numbers{
+        cursor: pointer;
+        margin: 0 auto;
+        .number{
+            text-align: center;
+            justify-content: center;
+            width: 34px;
+            height: 24px;
+        }
+        .border{
+            box-sizing: border-box;
+            margin: 12px auto;
+            border-bottom: 1px solid #E0E0E0;
+        }
+    }
+}

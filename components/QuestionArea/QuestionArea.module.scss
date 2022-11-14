@@ -1,0 +1,42 @@
+.container {
+  width: 824px;
+  height: 374px;
+  //margin: 289px calc((100% - 724px) / 2);
+  margin:0 calc((100% - 724px) / 2) 0 ;
+  //border: 1px solid gray;
+  position: relative;
+
+  .title {
+    max-width: 650px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .answers {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-top: 60px;
+
+    .item {
+      margin: 5px 5px;
+    }
+  }
+
+  .answerButtons {
+    display: inline-flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    .item {
+      margin-left: 12px;
+    }
+
+  }
+}

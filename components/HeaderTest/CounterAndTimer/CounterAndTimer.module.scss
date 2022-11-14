@@ -1,0 +1,25 @@
+.container{
+  width: 111px;
+  height: 48px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items:center;
+  box-sizing: border-box;
+  margin-left: 30px;
+  .icon{
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    padding: 6px;
+  }
+  .text{
+    box-sizing: border-box;
+    padding-right: 3px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    color: #006666;
+  }
+}
