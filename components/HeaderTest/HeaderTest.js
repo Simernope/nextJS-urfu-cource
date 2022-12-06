@@ -5,41 +5,37 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 
 const HeaderTest = ({title, icon, timeLimit, testLength}) => {
+
     const router = useRouter()
     const currentQuestion = router.query['num'][1]
 
     const [timeInSeconds, setTimeInSeconds] = useState(timeLimit)
-    const [isActive, setIsActive] = useState(true)
 
 
     useEffect(() => {
-            console.log('Cработал useEffect')
-            setTimeInSeconds(timeLimit)
-            let interval = null;
-            if(isActive){
-                if (timeInSeconds === 0) {
-                    clearInterval(interval);
-                    console.log('Время вышло!')
-                    setIsActive(false)
-                }else{
-                    interval = setInterval(() => {
-
-                        setTimeInSeconds(timeInSeconds => timeInSeconds - 1);
-                    }, 1000);
-                }
-            }else {
-                clearInterval(interval);
+        const timer = setInterval(() => {
+            if(currentQuestion === 'final'){
+                return () => clearInterval(timer)
             }
+            if (timeInSeconds > 0) {
+                setTimeInSeconds(timeInSeconds - 1);
+            }
+        }, 1000)
 
-
-            return () => clearInterval(interval);
-    }, [title])
+        return () => clearInterval(timer)
+    }, [timeInSeconds]);
 
     return (
         <>
             <div className={styles.container}>
                 <div className={styles.item}>
-                    <CounterAndTimer icon={'/timerIcon.svg'} text={`${currentQuestion}/${testLength}`}/>
+                    {
+                       parseInt(currentQuestion)  ?
+                            <CounterAndTimer icon={'/timerIcon.svg'} text={`${currentQuestion}/${testLength}`}/>
+                            :
+                            <CounterAndTimer icon={'/timerIcon.svg'} text={`${testLength}/${testLength}`}/>
+                    }
+
                     <CounterAndTimer icon={'/questionIcon.svg'} text={timeInSeconds}/>
 
                 </div>

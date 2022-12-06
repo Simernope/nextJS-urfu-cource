@@ -1,42 +1,54 @@
 import styles from './Timer.module.scss'
-import {useState, useEffect} from "react";
+import {useState} from "react";
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
-const Timer = ({minutes = 0, seconds = 10, active = true, quizId}) => {
-    const [timeInSeconds, setTimeInSeconds] = useState(minutes * 60 + seconds)
-    const [isActive, setIsActive] = useState(active)
 
-    useEffect(() => {
-        console.log('Cработал useEffect')
+
+
+const Timer = ({seconds = 10, quizId, isTimerEndFunction}) => {
+    const [timeInSeconds, setTimeInSeconds] = useState(seconds)
+
+
+
+
+    /*useEffect( () => {
+
         setTimeInSeconds(seconds)
-        let interval = null;
-
-        interval = setInterval(() => {
-            if (isActive) {
-                setTimeInSeconds(timeInSeconds => timeInSeconds - 1);
-                console.log('Внутри интервала')
-                if (timeInSeconds < 0) {
-                    console.log('Время вышло!')
-                    setIsActive(false)
-                }
-            } else {
-                clearInterval(interval);
-            }
-        }, 1000);
+        console.log('timeInSeconds,', timeInSeconds)
 
 
-        return () => clearInterval(interval);
-    }, [active, seconds, quizId])
+    }, [quizId])*/
+
     return (
         <>
             <div className={styles.container}>
                 <div className={styles.content}>
-                    {timeInSeconds}
+                    {timeInSeconds &&
+                        <CountdownCircleTimer
+                            key={quizId}
+                            isPlaying={true}
+                            duration={timeInSeconds}
+                            colors={['#00EAD9']}
+                            strokeWidth={2}
+                            trailStrokeWidth={0}
+                            size={120}
+                            onComplete={() => isTimerEndFunction()}
+                            onUpdate={()=>setTimeInSeconds(seconds)}
+                        >
+                            {({ remainingTime }) => remainingTime}
+                        </CountdownCircleTimer>
+                    }
+
                 </div>
             </div>
+
 
         </>
 
     )
 }
+
+
+
 
 export default Timer

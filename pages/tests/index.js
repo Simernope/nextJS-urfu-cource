@@ -2,10 +2,15 @@ import styles from '/styles/allTests.module.scss'
 import Link from "next/link";
 
 
-export async function getServerSideProps(){
-    const response =await fetch('http://localhost:3000/api/newTests')
+export async function getStaticProps(){
+    const response =await fetch('http://localhost:3000/api/mongoTests')
     const data = await response.json()
-    console.log(data)
+
+    if(!data){
+        return {
+            notFound: true,
+        }
+    }
     return{
         props:{
             allTests: data
@@ -14,12 +19,14 @@ export async function getServerSideProps(){
 }
 
 const AllTests = ({allTests}) => {
-    const{newTests} = allTests
+    const {tests} = allTests
+
+
     return(
         <div className={styles.container}>
             Доступные тесты:
-            {newTests?
-                newTests.map(({title, id}) => (
+            {tests?
+                tests.map(({title, id}) => (
                     <div key={id} className={styles.test}>
                         <Link href={`tests/${id}/1`}>
                             {title}

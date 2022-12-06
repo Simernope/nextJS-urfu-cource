@@ -1,7 +1,6 @@
 .container{
     width: 100px;
     height: 1080px;
-    color: #3AB8BC;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     display: inline-flex;
     flex-direction: column;
@@ -21,6 +20,15 @@
             justify-content: center;
             width: 34px;
             height: 24px;
+        }
+        &_default{
+            color: #BDBDBD;
+        }
+        &_answerd{
+            color: #006666;
+        }
+        &_current{
+            color: #3AB8BC;
         }
         .border{
             box-sizing: border-box;

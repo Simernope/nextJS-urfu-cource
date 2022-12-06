@@ -18,13 +18,22 @@ const QuestionArea = ({test, nextPath, path, testId}) => {
     const [answerClicked, setAnswerClicked] = useState(false)
     const [isQuestionTrue, setIsQuestionTrue] = useState(undefined)
     const [selected, setSelected] = useState(undefined)
-    const [isTimerActive , setIsTimerActive] = useState(true)
+    const [isTimerActive, setIsTimerActive] = useState(true)
+    const [isTimerEnd, setIsTimerEnd] = useState(false)
 
+    const [selectedAnswerId, setSelectedAnswerId] = useState(undefined)
+    const [selectedQuizStatus, setSelectedQuizStatus] = useState(undefined)
+
+    const handleTimerEnd = () => {
+        setIsTimerEnd(true)
+    }
 
     const toClickAnswer = (id, status) => {
         setIsQuestionTrue(status)
         setSelected(id)
         setAnswerClicked(true)
+        setSelectedAnswerId(id)
+        setSelectedQuizStatus(status)
 
 
     }
@@ -36,23 +45,64 @@ const QuestionArea = ({test, nextPath, path, testId}) => {
         setIsQuestionTrue(undefined)
         setSelected(undefined)
         setIsTimerActive(false)
-        router.push(`/tests/${testId}/${nextPath}`).then()
+        setIsTimerEnd(false)
+        if (path >= test.questions.length) {
+            router.push(`/tests/${testId}/final`).then()
+        } else {
+            router.push(`/tests/${testId}/${nextPath}`).then()
+        }
 
-        /*  if(path >= test.questions.length){
-              router.push(`/tests/${testId}/final`).then()
-          }else {
-              router.push(`/tests/${testId}/${nextPath}`).then()
-          }*/
+
+        if (!localStorage.tests) {
+            localStorage.tests = JSON.stringify([
+                {
+                    testId: testId,
+                    questions:
+                        [{
+                            id: selectedAnswerId,
+                            status: selectedQuizStatus
+                        }]
+                }])
+        } else {
+            let tmpData = JSON.parse(localStorage.tests)
+            console.log('tmpData', tmpData)
+            console.log('tmpData11', tmpData.find((el) => el.testId === testId))
+            let myTest = tmpData.find(el => el.testId === testId)
+            if(myTest){
+                console.log('myTest', myTest)
+                myTest.questions[myTest.questions.length ] = {
+                    id: selectedAnswerId,
+                    status: selectedQuizStatus
+                }
+                tmpData[tmpData.length - 1] = myTest
+                localStorage.tests = JSON.stringify(tmpData)
+            }else{
+                tmpData[tmpData.length] = {
+                    testId: testId,
+                    questions:
+                        [{
+                            id: selectedAnswerId,
+                            status: selectedQuizStatus
+                        }]
+                }
+                localStorage.tests =JSON.stringify(tmpData)
+            }
+
+
+        }
+
     }
 
     const toSkipQuestion = () => {
         setIsTimerActive(false)
+        setIsTimerEnd(false)
         answerClicked ? console.log('нельзя выбрать ответ') : console.log('skipped')
-        if(path >= test.questions.length){
+        if (path >= test.questions.length) {
             router.push(`/tests/${testId}/final`).then()
-        }else {
+        } else {
             router.push(`/tests/${testId}/${nextPath}`).then()
         }
+        localStorage.tests = JSON.stringify([{questions: [{id: selectedAnswerId, status: 'Ответ не выбран'}]}])
     }
 
     return (
@@ -61,57 +111,81 @@ const QuestionArea = ({test, nextPath, path, testId}) => {
 
             {
                 !path ?
-                    <>Подождите</>
-                    :
-                        path > test.questions.length?
                     <div className={styles.container}>
                         Вы решили тест!
                     </div>
-            :
-                    <>
-                        <Timer seconds={test.questions[path - 1].timeLimit} active={isTimerActive} quizId={test.questions[path - 1].id}/>
-
+                    :
+                    path > test.questions.length ?
                         <div className={styles.container}>
-                            <div className={styles.title}>
-                                {test.questions[path - 1].questionTitle}
-                            </div>
-                            <div className={styles.answers}>
-
-                                {test.questions[path - 1].answers.map(({answerTitle, status, id}) => (
-                                        <div className={styles.item} key={id} onClick={() => toClickAnswer(id, status)}>
-
-                                                <RadioButton text={answerTitle} checked={id === selected}/>
-
-                                        </div>
-                                    )
-                                )}
-                            </div>
-                            {path >= test.questions.length ?
-                                <>
-                                    <div className={styles.answerButtons}>
-                                        <div className={styles.item} onClick={() => toSkipQuestion()}>
-                                            <Button text={'Пропустить'} status={answerClicked ? "disabled" : "OK"}/>
-                                        </div>
-                                        <div className={styles.item} onClick={() => toAnswerQuestion()}>
-                                            <Button text={'Ответить'} status={answerClicked ? "OK" : "disabled"}/>
-                                        </div>
-                                    </div>
-                                </>
-                                :
-                                <>
-                                    <div className={styles.answerButtons}>
-                                        <div className={styles.item} onClick={() => toSkipQuestion()}>
-                                            <Button text={'Пропустить'} status={answerClicked ? "disabled" : "OK"}/>
-                                        </div>
-                                        <div className={styles.item} onClick={() => toAnswerQuestion()}>
-                                            <Button text={'Ответить'} status={answerClicked ? "OK" : "disabled"}/>
-                                        </div>
-                                    </div>
-                                </>
-                            }
-
+                            Вы решили тест!
                         </div>
-                    </>
+                        :
+                        <>
+                            <Timer seconds={test.questions[path - 1].timeLimit} active={isTimerActive}
+                                   quizId={test.questions[path - 1].id} isTimerEndFunction={handleTimerEnd}
+                                   testId={testId}/>
+
+                            <div className={styles.container}>
+                                <div className={styles.title}>
+                                    {test.questions[path - 1].questionTitle}
+                                </div>
+                                <div className={styles.answers}>
+
+                                    {test.questions[path - 1].answers.map(({answerTitle, status, id}) => (
+                                            <div key={id}>
+                                                {isTimerEnd ?
+
+                                                    <div className={styles.item} key={id}>
+
+                                                        <RadioButton text={answerTitle} checked={id === selected}
+                                                                     disabled={isTimerEnd}/>
+
+                                                    </div>
+
+                                                    :
+
+                                                    <div className={styles.item} key={id}
+                                                         onClick={() => toClickAnswer(id, status)}>
+
+                                                        <RadioButton text={answerTitle} checked={id === selected}
+                                                                     disabled={isTimerEnd}/>
+
+                                                    </div>
+
+                                                }
+                                            </div>
+
+
+                                        )
+                                    )}
+                                </div>
+                                {isTimerEnd && !answerClicked ?
+
+                                    <div className={styles.answerButtons}>
+                                        <div className={styles.item} onClick={() => toSkipQuestion()}>
+                                            <Button text={'Пропустить'} status={"OK"}/>
+                                        </div>
+                                        <div className={styles.item}>
+                                            <Button text={'Ответить'} status={"disabled"}/>
+                                        </div>
+                                    </div>
+
+                                    :
+
+
+                                    <div className={styles.answerButtons}>
+                                        <div className={styles.item} onClick={() => toSkipQuestion()}>
+                                            <Button text={'Пропустить'} status={answerClicked ? "disabled" : "OK"}/>
+                                        </div>
+                                        <div className={styles.item} onClick={() => toAnswerQuestion()}>
+                                            <Button text={'Ответить'} status={answerClicked ? "OK" : "disabled"}/>
+                                        </div>
+                                    </div>
+
+                                }
+
+                            </div>
+                        </>
 
             }
 

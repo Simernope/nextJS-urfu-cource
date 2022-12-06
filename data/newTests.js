@@ -4,13 +4,13 @@ export const newTests =[{
     id:1,
     engPath: "first-test",
     questions: [{
-        questionTitle: "Вопрос номер один",
+        questionTitle: "Вопрос номер один тест 1",
         type: "radio",
         id:1,
         timeLimit: 60,
         answers: [
             {
-                answerTitle: "Ответ 1",
+                answerTitle: "Ответ 1 тест 1",
                 status: false,
                 id: 1,
             },
@@ -32,13 +32,13 @@ export const newTests =[{
         ]
     },
         {
-            questionTitle: "Вопрос номер два",
+            questionTitle: "Вопрос номер два тест 1",
             type: "radio",
             id:2,
             timeLimit: 80,
             answers: [
                 {
-                    answerTitle: "Ответ 11",
+                    answerTitle: "Ответ 11 тест 1",
                     status: false,
                     id: 1,
                 },
@@ -61,13 +61,13 @@ export const newTests =[{
         }
         ,
         {
-            questionTitle: "Вопрос номер три",
+            questionTitle: "Вопрос номер три тест 1",
             type: "radio",
             id:3,
             timeLimit: 100,
             answers: [
                 {
-                    answerTitle: "Ответ 1 вопрос 3",
+                    answerTitle: "Ответ 1 вопрос 3 тест 1",
                     status: false,
                     id: 1,
                 },
@@ -89,13 +89,13 @@ export const newTests =[{
             ]
         },
         {
-            questionTitle: "Вопрос номер 4",
+            questionTitle: "Вопрос номер 4 тест 1",
             type: "radio",
             id:4,
             timeLimit: 60,
             answers: [
                 {
-                    answerTitle: "Ответ 1 вопрос 4",
+                    answerTitle: "Ответ 1 вопрос 4 тест 1",
                     status: false,
                     id: 1,
                 },
@@ -117,13 +117,13 @@ export const newTests =[{
             ]
         },
         {
-            questionTitle: "Вопрос номер 5",
+            questionTitle: "Вопрос номер 5 тест 1",
             type: "radio",
             id:5,
             timeLimit: 80,
             answers: [
                 {
-                    answerTitle: "Ответ 1 вопрос 5",
+                    answerTitle: "Ответ 1 вопрос 5 тест 1",
                     status: false,
                     id: 1,
                 },
@@ -145,13 +145,13 @@ export const newTests =[{
             ]
         },
         {
-            questionTitle: "Вопрос номер 6",
+            questionTitle: "Вопрос номер 6 тест 1",
             type: "radio",
             id:6,
             timeLimit: 40,
             answers: [
                 {
-                    answerTitle: "Ответ 1 вопрос 6",
+                    answerTitle: "Ответ 1 вопрос 6 тест 1",
                     status: false,
                     id: 1,
                 },
@@ -183,23 +183,23 @@ export const newTests =[{
         id:2,
         engPath: "second-test",
         questions: [{
-            questionTitle: "Вопрос номер один",
+            questionTitle: "Вопрос номер один тест 2",
             type: "radio",
             id:1,
             timeLimit: 60,
             answers: [
                 {
-                    answerTitle: "Ответ 1",
+                    answerTitle: "Ответ 1  тест 2",
                     status: false,
                     id: 1,
                 },
                 {
-                    answerTitle: "Ответ 2",
+                    answerTitle: "Ответ 2  тест 2",
                     status: false,
                     id: 2,
                 },
                 {
-                    answerTitle: "Ответ 3",
+                    answerTitle: "Ответ 3  тест 2",
                     status: true,
                     id: 3,
                 },
@@ -211,7 +211,7 @@ export const newTests =[{
             ]
         },
             {
-                questionTitle: "Вопрос номер два",
+                questionTitle: "Вопрос номер два  тест 2",
                 type: "radio",
                 id:2,
                 timeLimit: 80,
@@ -240,7 +240,7 @@ export const newTests =[{
             }
             ,
             {
-                questionTitle: "Вопрос номер три",
+                questionTitle: "Вопрос номер три  тест 2",
                 type: "radio",
                 id:3,
                 timeLimit: 100,
@@ -256,7 +256,7 @@ export const newTests =[{
                         id: 2,
                     },
                     {
-                        answerTitle: "Ответ 3 вопрос 3",
+                        answerTitle: "Ответ 3 вопрос 3  тест 2",
                         status: false,
                         id: 3,
                     },
@@ -268,7 +268,7 @@ export const newTests =[{
                 ]
             },
             {
-                questionTitle: "Вопрос номер 4",
+                questionTitle: "Вопрос номер 4  тест 2",
                 type: "radio",
                 id:4,
                 timeLimit: 60,
@@ -284,7 +284,7 @@ export const newTests =[{
                         id: 2,
                     },
                     {
-                        answerTitle: "Ответ 3 вопрос 4",
+                        answerTitle: "Ответ 3 вопрос 4  тест 2",
                         status: false,
                         id: 3,
                     },
@@ -296,7 +296,7 @@ export const newTests =[{
                 ]
             },
             {
-                questionTitle: "Вопрос номер 5",
+                questionTitle: "Вопрос номер 5  тест 2",
                 type: "radio",
                 id:5,
                 timeLimit: 80,
@@ -307,7 +307,7 @@ export const newTests =[{
                         id: 1,
                     },
                     {
-                        answerTitle: "Ответ 2 вопрос 5",
+                        answerTitle: "Ответ 2 вопрос 5  тест 2",
                         status: false,
                         id: 2,
                     },
@@ -324,13 +324,13 @@ export const newTests =[{
                 ]
             },
             {
-                questionTitle: "Вопрос номер 6",
+                questionTitle: "Вопрос номер 6  тест 2",
                 type: "radio",
                 id:6,
                 timeLimit: 40,
                 answers: [
                     {
-                        answerTitle: "Ответ 1 вопрос 6",
+                        answerTitle: "Ответ 1 вопрос 6 тест 2",
                         status: false,
                         id: 1,
                     },

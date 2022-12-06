@@ -4,7 +4,7 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 //список вопросов
 //активный, отвеченный, неотвеченный
-const QuestionsSide = ({questions, active, answered}) => {
+const QuestionsSide = ({questions, active}) => {
     const router = useRouter()
     const testPath = router.query['num'][0]
     console.log(testPath)
@@ -18,8 +18,13 @@ const QuestionsSide = ({questions, active, answered}) => {
                 <div className={styles.numbers}>
                     {questions.map(({id}) => (
                         <Link href={`/tests/${testPath}/${id}`} key={id}>
-                            <div >
-                                <div className={styles.number}>
+                            <div>
+                                <div  className={`
+                                ${styles.number} 
+                                ${styles.numbers_default}
+                                ${active === id && styles.numbers_current}
+
+                                `}>
                                     {id}
                                 </div>
                                 <div className={styles.border}>
