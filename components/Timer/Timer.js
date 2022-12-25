@@ -7,18 +7,6 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 const Timer = ({seconds = 10, quizId, isTimerEndFunction}) => {
     const [timeInSeconds, setTimeInSeconds] = useState(seconds)
-
-
-
-
-    /*useEffect( () => {
-
-        setTimeInSeconds(seconds)
-        console.log('timeInSeconds,', timeInSeconds)
-
-
-    }, [quizId])*/
-
     return (
         <>
             <div className={styles.container}>

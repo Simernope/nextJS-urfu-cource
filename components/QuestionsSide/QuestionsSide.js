@@ -7,7 +7,6 @@ import {useRouter} from "next/router";
 const QuestionsSide = ({questions, active}) => {
     const router = useRouter()
     const testPath = router.query['num'][0]
-    console.log(testPath)
     return (
         <>
             <div className={styles.container}>
@@ -17,15 +16,15 @@ const QuestionsSide = ({questions, active}) => {
 
                 <div className={styles.numbers}>
                     {questions.map(({id}) => (
-                        <Link href={`/tests/${testPath}/${id}`} key={id}>
+                        <Link href={`/tests/${testPath}/${id % 10}`} key={id}>
                             <div>
                                 <div  className={`
                                 ${styles.number} 
                                 ${styles.numbers_default}
-                                ${active === id && styles.numbers_current}
+                                ${active === id % 10 && styles.numbers_current}
 
                                 `}>
-                                    {id}
+                                    {id % 10}
                                 </div>
                                 <div className={styles.border}>
 

@@ -1,47 +1,4 @@
-.container {
-  width: 824px;
-  height: 374px;
-  //margin: 289px calc((100% - 724px) / 2);
-  margin:0 calc((100% - 724px) / 2) 0 ;
-  //border: 1px solid gray;
-  position: relative;
-
-  .title {
-    max-width: 650px;
-    margin: 0 auto;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
-    align-items: center;
-    text-align: center;
-  }
-
-  .answers {
-    display: inline-flex;
-    flex-wrap: wrap;
-    margin-top: 60px;
-
-    .item {
-      margin: 5px 5px;
-    }
-  }
-
-  .answerButtons {
-    display: inline-flex;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-
-    .item {
-      margin-left: 12px;
-    }
-
-  }
-}
-
-.statistic{
+.statistic {
   color: #828282;
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
@@ -50,13 +7,15 @@
   font-size: 15px;
   line-height: 24px;
   margin: 20px 0;
-  .statisticButton{
+
+  .statisticButton {
 
   }
 
 
 }
-.statusFalse{
+
+.statusFalse {
   padding: 10px;
   border-radius: 10px;
   display: flex;
@@ -65,7 +24,8 @@
   background-color: rgba(255, 2, 2, 0.7);
   color: white;
 }
-.statusTrue{
+
+.statusTrue {
   padding: 10px;
   border-radius: 10px;
   display: flex;
@@ -75,13 +35,14 @@
   color: white;
 }
 
-.statisticContainer{
+.statisticContainer {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
 }
-.question{
+
+.question {
   color: #696969;
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
@@ -91,7 +52,8 @@
   line-height: 24px;
   margin: 10px 10px;
 }
-.answer{
+
+.answer {
   color: #696969;
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
@@ -101,7 +63,8 @@
   line-height: 24px;
   margin: 10px 10px;
 }
-.questionTitle{
+
+.questionTitle {
   color: #828282;
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
@@ -112,7 +75,7 @@
   margin: 10px 10px;
 }
 
-.answerTitle{
+.answerTitle {
   color: #828282;
   text-transform: uppercase;
   font-family: "Roboto", sans-serif;
@@ -122,3 +85,45 @@
   line-height: 24px;
   margin: 10px 10px;
 }
+
+.table {
+  width: 100%;
+  margin: 20px 0;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+    .th {
+      padding: 5px;
+      background: #efefef;
+      border: 1px solid #dddddd;
+      color: #5d5c5c;
+      text-transform: uppercase;
+      font-family: "Roboto", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    .td {
+      border: 1px solid #dddddd;
+      padding: 5px;
+      color: #828282;
+      text-transform: uppercase;
+      font-family: "Roboto", sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 24px;
+      margin: 10px 10px;
+    }
+
+}
+
+.statusTd{
+  width: 150px;
+}
+
+
+
+
+
