@@ -1,0 +1,31 @@
+
+.container{
+  border: 2px solid #3AB8BC;
+  border-radius: 15px;
+  margin: 20px 0;
+  padding: 5px;
+  .circle{
+    width: 200px;
+    margin: 20px;
+  }
+  .statValues{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .numbers{
+      color: #828282;
+      text-transform: uppercase;
+      font-family: "Roboto", sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 24px;
+      margin: 10px 10px;
+      .numbersChild{
+        margin-bottom: 20px;
+      }
+
+
+    }
+  }
+}

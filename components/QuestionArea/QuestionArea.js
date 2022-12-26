@@ -163,7 +163,7 @@ const QuestionArea = ({test, nextPath, path, testId, title}) => {
         setIsShowStatisticFromMongoDb(true)
         const response =await fetch(`http://localhost:3000/api/getResult/${testId}`)
         const data = await response.json()
-        setStatisticFromMongoDb(data)
+        await setStatisticFromMongoDb(data)
         console.log(data)
     }
 
